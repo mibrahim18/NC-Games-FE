@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import API from "../axios/API";
+import Api from "../axios/Api";
 import ReviewCard from "./ReviewCard";
 
 const Reviews = () => {
@@ -8,7 +8,7 @@ const Reviews = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    API.get("/reviews")
+    Api.get("/reviews")
       .then((response) => {
         setList(response.data);
         setIsLoading(false);

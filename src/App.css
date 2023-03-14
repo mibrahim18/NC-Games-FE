@@ -4,6 +4,9 @@
 }
 .App {
   text-align: center;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .indv-review {
@@ -39,9 +42,18 @@
   height: auto;
   margin-bottom: 10px;
 }
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.review-card li img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 .cropped-image {
   width: 150px;
@@ -49,35 +61,22 @@
   border-radius: 65%;
   object-fit: cover;
   margin-top: -20px;
-  animation: App-logo-spin infinite 20s linear;
+  animation: rotate infinite 20s linear;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media only screen and (min-width: 768px) {
+  .App {
+    max-width: 768px;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .review-card li,
+  .indv-review {
+    width: 90%;
+    margin: 0 auto;
   }
-  to {
-    transform: rotate(360deg);
+
+  .cropped-image {
+    width: 100px;
+    height: 90px;
+    margin-top: -10px;
   }
 }

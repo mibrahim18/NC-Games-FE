@@ -1,19 +1,24 @@
 import React, { useState } from "react";
-import API from "../axios/API";
+import Api from "../axios/Api";
 import IndvReview from "./IndvReview";
+import ReviewCardReusable from "./ReviewCardReusable";
 
 const ReviewCard = ({ data }) => {
   const [clickedReview, setClickedReview] = useState(false);
   const [showIndvReview, setShowIndvReview] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleClick = (review_id) => {
-    API.get(`/reviews/${review_id}`)
+    setIsLoading(true);
+    Api.get(`/reviews/${review_id}`)
       .then((response) => {
         setClickedReview(response.data);
         setShowIndvReview(true);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
+        setIsLoading(false);
       });
   };
 
@@ -25,26 +30,12 @@ const ReviewCard = ({ data }) => {
   return (
     <div>
       {!showIndvReview ? (
-        <ul className="review-card">
-          {data.reviews.map((review) => (
-            <li
-              key={review.review_id}
-              onClick={() => handleClick(review.review_id)}
-            >
-              <h3>{review.title}</h3>
-              <h4>Designed by {review.designer}</h4>
-              <p>owner: {review.owner}</p>
-              <img src={review.review_img_url} alt={review.title} />
-              <p>Category: {review.category}</p>
-              <p>
-                Created at {new Date(review.created_at).toLocaleString("en")}
-              </p>
-            </li>
-          ))}
-        </ul>
+        <ReviewCardReusable data={data} handleClick={handleClick} />
       ) : (
         <button onClick={handleBack}>Back</button>
       )}
+
+      {isLoading ? <h3>Loading...</h3> : ""}
 
       {showIndvReview ? <IndvReview review={clickedReview} /> : ""}
     </div>
