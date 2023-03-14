@@ -1,25 +1,43 @@
 import { useState, useEffect } from "react";
-import API from "../axios/API";
-import ReviewCard from "./ReviewCard";
+import { getReviews } from "../axios/apiQueries";
+import { useNavigate } from "react-router-dom";
 
 const Reviews = () => {
   const [list, setList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
-    API.get("/reviews")
-      .then((response) => {
-        setList(response.data);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setIsLoading(false);
-      });
+    getReviews().then((reviewList) => {
+      setList(reviewList);
+    });
+    setIsLoading(false);
   }, []);
-
-  return isLoading ? <h1>Loading...</h1> : <ReviewCard data={list} />;
+  const handleClick = (review_id) => {
+    navigate(`/reviews/${review_id}`);
+  };
+  return isLoading ? (
+    <h1>Loading...</h1>
+  ) : (
+    <div>
+      <ul className="review-card">
+        {list.map((review) => (
+          <li
+            key={review.review_id}
+            onClick={() => handleClick(review.review_id)}
+          >
+            <h3>{review.title}</h3>
+            <h4>Designed by {review.designer}</h4>
+            <p>owner: {review.owner}</p>
+            <img src={review.review_img_url} alt={review.title} />
+            <p>Category: {review.category}</p>
+            <p>Created at {new Date(review.created_at).toLocaleString("en")}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default Reviews;
