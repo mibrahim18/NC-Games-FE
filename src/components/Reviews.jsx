@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getReviews } from "../axios/api";
+import { getReviews } from "../axios/apiQueries";
 import { useNavigate } from "react-router-dom";
 
 const Reviews = () => {

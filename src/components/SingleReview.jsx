@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getSingleReview } from "../axios/api";
+import { getSingleReview } from "../axios/apiQueries";
 
 const SingleReview = () => {
   const { review_id } = useParams();
