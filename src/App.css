@@ -6,6 +6,16 @@
   text-align: center;
 }
 
+.indv-review {
+  border: 3px solid #ccc;
+  margin-bottom: 25px;
+  padding: 10px;
+  border-radius: 40px;
+  height: 80%;
+  width: 100%;
+  margin-top: 20px;
+}
+
 .review-card li {
   border: 3px solid #ccc;
   margin-bottom: 25px;
@@ -14,14 +24,17 @@
   list-style: none;
 }
 
-.review-card h3 {
+.review-card,
+.indv-review h3 {
   font-size: 24px;
 }
 
-.review-card h4 {
+.review-card,
+.indv-review h4 {
   font-size: 18px;
 }
-.review-card img {
+.review-card,
+.indv-review img {
   max-width: 100%;
   height: auto;
   margin-bottom: 10px;
