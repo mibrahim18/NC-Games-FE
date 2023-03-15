@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getSingleReview } from "../axios/apiQueries";
 import Comments from "./Comments";
 
@@ -7,6 +7,8 @@ const SingleReview = () => {
   const { review_id } = useParams();
   const [singleReviewObj, setSingleReviewObj] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+
   useEffect(() => {
     setIsLoading(true);
     getSingleReview(review_id).then((singleReview) => {
@@ -14,10 +16,16 @@ const SingleReview = () => {
       setIsLoading(false);
     });
   }, [review_id]);
+
+  const handleBack = () => {
+    navigate("/reviews");
+  };
+
   return isLoading ? (
     <h1>Loading...</h1>
   ) : (
     <div className="indv-review">
+      <button onClick={handleBack}>Back</button>
       <br />
       <br />
       <h3>{singleReviewObj.title}</h3>
