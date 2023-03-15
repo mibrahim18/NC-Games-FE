@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleReview } from "../axios/apiQueries";
+import Comments from "./Comments";
 
 const SingleReview = () => {
   const { review_id } = useParams();
@@ -46,6 +47,7 @@ const SingleReview = () => {
         Created at {new Date(singleReviewObj.created_at).toLocaleString("en")}
       </p>
       <br />
+      <Comments review_id={review_id} />
     </div>
   );
 };
