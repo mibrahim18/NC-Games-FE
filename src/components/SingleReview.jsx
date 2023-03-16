@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getSingleReview } from "../axios/apiQueries";
 import Comments from "./Comments";
+import Votes from "./Votes";
 
 const SingleReview = () => {
   const { review_id } = useParams();
@@ -41,7 +42,14 @@ const SingleReview = () => {
       <br />
       <p>Category: {singleReviewObj.category}</p>
       <br />
-      {singleReviewObj.votes ? "Votes: " + singleReviewObj.votes : ""}
+      {singleReviewObj.votes ? (
+        <Votes
+          review_id={singleReviewObj.review_id}
+          votes={singleReviewObj.votes}
+        />
+      ) : (
+        "No votes yet"
+      )}
       <>
         <br />
       </>
