@@ -21,3 +21,13 @@ export const getCommentForSingleReview = (review_id) => {
     return commentsResponse.data.comments;
   });
 };
+
+export const UpdateVotes = (review_id, inc_votes) => {
+  return api
+    .patch(`/reviews/${review_id}`, {
+      inc_votes,
+    })
+    .then((voteResponse) => {
+      return voteResponse;
+    });
+};

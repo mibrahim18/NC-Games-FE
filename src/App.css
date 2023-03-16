@@ -25,6 +25,9 @@
   padding: 10px;
   border-radius: 40px;
   list-style: none;
+}
+
+button {
   cursor: pointer;
 }
 
