@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getSingleReview } from "../axios/apiQueries";
 import Comments from "./Comments";
+
 import Votes from "./Votes";
 
 const SingleReview = () => {
@@ -64,6 +65,7 @@ const SingleReview = () => {
       </p>
       <br />
       <Comments review_id={review_id} />
+      <br />
     </div>
   );
 };
