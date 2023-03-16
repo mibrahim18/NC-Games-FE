@@ -16,7 +16,7 @@ const PostComment = ({ review_id, setCommentsList }) => {
       body: comment,
       created_at: new Date().toISOString(),
     };
-    setCommentsList((prevList) => [...prevList, newComment]);
+    setCommentsList((prevList) => [newComment, ...prevList]);
     postComment(review_id, undefined, comment)
       .then(() => {
         setIsPosting(false);
@@ -34,6 +34,7 @@ const PostComment = ({ review_id, setCommentsList }) => {
   return (
     <div>
       <h4>Post a comment</h4>
+      <p>Newest comments at top</p>
       <textarea
         placeholder="Write your comment here..."
         value={comment}
