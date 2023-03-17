@@ -31,3 +31,14 @@ export const UpdateVotes = (review_id, inc_votes) => {
       return voteResponse;
     });
 };
+
+export const postComment = (review_id = 3, username = "grumpy19", body) => {
+  return api
+    .post(`/reviews/${review_id}/comments`, {
+      username,
+      body,
+    })
+    .then((data) => {
+      console.log(data);
+    });
+};

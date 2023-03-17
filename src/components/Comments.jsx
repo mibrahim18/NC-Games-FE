@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getCommentForSingleReview } from "../axios/apiQueries";
+import PostComment from "./PostComment";
 
 const Comments = ({ review_id }) => {
   const [commentsList, setCommentsList] = useState([]);
@@ -40,6 +41,7 @@ const Comments = ({ review_id }) => {
           </ul>
         </>
       )}
+      <PostComment review_id={review_id} setCommentsList={setCommentsList} />
     </div>
   );
 };
