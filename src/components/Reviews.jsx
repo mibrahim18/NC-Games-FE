@@ -13,12 +13,14 @@ const Reviews = () => {
     setIsLoading(true);
     getReviews().then((reviewList) => {
       setList(reviewList);
+      setIsLoading(false);
     });
-    setIsLoading(false);
   }, []);
+
   const handleClick = (review_id) => {
     navigate(`/reviews/${review_id}`);
   };
+
   return isLoading ? (
     <h1>Loading...</h1>
   ) : (

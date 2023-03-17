@@ -42,3 +42,15 @@ export const postComment = (review_id = 3, username = "grumpy19", body) => {
       console.log(data);
     });
 };
+
+export const getListAllCategories = () => {
+  return api.get(`/categories`).then(({ data }) => {
+    return data.categories;
+  });
+};
+
+export const getReviewsSingleCategory = (category) => {
+  return api.get(`/reviews?category=${category}`).then(({ data }) => {
+    return data.reviews;
+  });
+};
