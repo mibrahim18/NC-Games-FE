@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getReviewsSingleCategory } from "../axios/apiQueries";
+import { getReviews } from "../axios/apiQueries";
 import Votes from "./Votes";
 
 const SingleCategory = () => {
@@ -11,7 +11,7 @@ const SingleCategory = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    getReviewsSingleCategory(category).then((singleCategory) => {
+    getReviews(category).then((singleCategory) => {
       setSingleCategoryObj(singleCategory);
       setIsLoading(false);
     });
