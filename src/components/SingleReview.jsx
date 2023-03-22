@@ -27,7 +27,7 @@ const SingleReview = () => {
     <h1>Loading...</h1>
   ) : (
     <div className="indv-review">
-      <button onClick={handleBack}>Back</button>
+      <button onClick={handleBack}>All Reviews</button>
       <br />
       <br />
       <h3>{singleReviewObj.title}</h3>

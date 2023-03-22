@@ -42,7 +42,7 @@ const PostComment = ({ review_id, setCommentsList }) => {
         disabled={isPosting}
       />
       <button onClick={onClick} disabled={isPosting}>
-        {isPosting ? "Posting..." : "Post"}
+        {isPosting ? "Posting to the top of the list..." : "Post"}
       </button>
     </div>
   );

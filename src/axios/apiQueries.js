@@ -4,18 +4,6 @@ export const api = axios.create({
   baseURL: "https://team-a.onrender.com/api",
 });
 
-export const getReviews = () => {
-  return api.get("/reviews").then((reviewList) => {
-    return reviewList.data.reviews;
-  });
-};
-
-export const getSingleReview = (review_id) => {
-  return api.get(`/reviews/${review_id}`).then((singleReview) => {
-    return singleReview.data.review;
-  });
-};
-
 export const getCommentForSingleReview = (review_id) => {
   return api.get(`/reviews/${review_id}/comments`).then((commentsResponse) => {
     return commentsResponse.data.comments;
@@ -41,4 +29,23 @@ export const postComment = (review_id = 3, username = "grumpy19", body) => {
     .then((data) => {
       console.log(data);
     });
+};
+
+export const getListAllCategories = () => {
+  return api.get(`/categories`).then(({ data }) => {
+    return data.categories;
+  });
+};
+
+export const getReviews = (category = null) => {
+  const url = category ? `/reviews?category=${category}` : "/reviews";
+  return api.get(url).then(({ data }) => {
+    return data.reviews;
+  });
+};
+
+export const getSingleReview = (review_id) => {
+  return api.get(`/reviews/${review_id}`).then((singleReview) => {
+    return singleReview.data.review;
+  });
 };
